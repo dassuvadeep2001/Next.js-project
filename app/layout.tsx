@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Wrapper from "../app/layout/Wrapper";
+import TanstackProvider from "@/utility/TanstackProvider";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +31,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <TanstackProvider>
+        <Wrapper>
+          <Toaster/>
         {children}
+        </Wrapper>
+        </TanstackProvider>
       </body>
     </html>
   );
